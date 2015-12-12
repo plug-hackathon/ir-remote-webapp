@@ -36,3 +36,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+
+# OS X
+.DS_Store
