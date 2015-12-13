@@ -8,7 +8,7 @@ String result;
 void setup() {
 
     // Able request to record IR-signals
-    Particle.function("emitIRSignals", emitIRSignals);
+    Particle.function("emitIRSignal", emitIRSignal);
     
     // Able request to send IR-signals
     Particle.function("sendIRSignal", sendIRSignal);
@@ -29,15 +29,19 @@ void loop() {
     
 }
 
-int emitIRSignals(String command) {
+int emitIRSignal(String command) {
     if(command == "start") {
         
         Serial.begin(9600);
         Serial1.begin(9600);
         
+        Serial.println("Start sending...");
+        
         return 0;
     }
     else if(command == "stop") {
+        
+        Serial.println("Stop sending...");
         
         Serial.end();
         Serial1.end();
