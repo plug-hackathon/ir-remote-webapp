@@ -1,0 +1,6 @@
+<% if @ir_signal.nec_code? %>
+  <h1>You're all set!</h1>
+  <%= link_to "Finish", ir_signals_path, class: "button success text-center" %>
+<% else %>
+  <h1>Please hold down a button on your remote</h1>
+<% end %>
