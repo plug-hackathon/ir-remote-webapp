@@ -75,6 +75,12 @@ h2 {
     height: 71px;
     border-radius: 50%;
     border: 2px solid #2ABF45;
+
+    user-select: none;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
 }
 
 .IrSignalAdd {
@@ -114,6 +120,12 @@ h2 {
 
     margin-top: 36px;
     outline: none;
+
+    user-select: none;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
 
     &.red {
         background: #E74C3C;
