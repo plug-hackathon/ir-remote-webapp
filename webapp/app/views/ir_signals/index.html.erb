@@ -9,7 +9,13 @@
     <% @ir_signals.each do |ir_signal| %>
       <tr>
         <td><%= ir_signal.name %></td>
-        <td><%= link_to "Send", trigger_ir_signal_path(ir_signal), class: "button tiny", method: :post %></td>
+        <td>
+          <%= link_to "Send", nec_code_trigger_ir_signal_path(ir_signal), class: "button tiny", method: :post %>
+          <%= link_to "Remove", ir_signal_path(ir_signal),
+                class: "button tiny alert",
+                method: :delete,
+                confirm: "Are you sure?" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
