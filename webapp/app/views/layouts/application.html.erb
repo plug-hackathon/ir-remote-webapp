@@ -6,6 +6,10 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "IR-remote Webapp" %></title>
 
+    <% if @redirect_url %>
+    <meta http-equiv='refresh' content='<%= @redirect_delay -%>;url=<%= @redirect_url -%>'>
+    <% end %>
+
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>

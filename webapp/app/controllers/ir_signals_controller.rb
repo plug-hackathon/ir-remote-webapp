@@ -25,6 +25,12 @@ class IrSignalsController < ApplicationController
 
   def nec_code_status
     @ir_signal = IrSignal.find(params[:id])
+    if @ir_signal.nec_code?
+      @redirect_url = root_url
+    else
+      @redirect_url = nec_code_status_ir_signal_url(@ir_signal)
+    end
+    @redirect_delay = 2
   end
 
   def nec_code_trigger
