@@ -1,0 +1,18 @@
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ir_signals.each do |ir_signal| %>
+      <tr>
+        <td><%= ir_signal.name %></td>
+        <td><%= link_to "Send", trigger_ir_signal_path(ir_signal), class: "button tiny", method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New IR signal", new_ir_signal_path, class: "button" %>
