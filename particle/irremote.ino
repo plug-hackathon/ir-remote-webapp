@@ -3,15 +3,10 @@
 
 IRsend irsend(D2);
 
-//int rawCode = 0xFFA857;
-
 String result;
 
 void setup() {
 
-    Serial.begin(9600);
-    Serial1.begin(9600);
-    
     // Able request to record IR-signals
     Particle.function("emitIRSignals", emitIRSignals);
     
@@ -21,19 +16,31 @@ void setup() {
 }
 
 void loop() {
-
+    
+    if(Serial1.available()) {
+        
+        //Read serial data from arduino
+        result = Serial1.readStringUntil('\n');
+        
+        Particle.publish("emitIRSignal", result);
+        
+        delay(1000);
+    }
+    
 }
 
 int emitIRSignals(String command) {
-    if(command == "start" && Serial1.available()) {
-        // Read serial data from arduino
-        result = Serial1.readStringUntil('\n');
+    if(command == "start") {
         
-        Particle.publish(result);
+        Serial.begin(9600);
+        Serial1.begin(9600);
         
         return 0;
     }
     else if(command == "stop") {
+        
+        Serial.end();
+        Serial1.end();
         return 0;
     }
     else {
@@ -43,11 +50,15 @@ int emitIRSignals(String command) {
 
 int sendIRSignal(String irSignal) {
 
-    int number = (int)strtol(irSignal, NULL, 10);
+    int irCode = (int)strtol(irSignal, NULL, 10);
     
-    Serial.println(number);
+    Serial.begin(9600);
     
-    irsend.sendNEC(number, 32);
+    Serial.println(irCode);
+    
+    irsend.sendNEC(irCode, 32);
+    
+    Serial.end();
     
     return 0;
 }
