@@ -1,10 +1,12 @@
-<%= form_for @ir_signal do |f| %>
-  <div class="small-12 columns">
+<div class="IrSignalAdd">
+  <%= form_for @ir_signal do |f| %>
+  <div class="name">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="small-12 columns">
-    <%= f.button "Create" %>
+  <div>
+    <%= f.button "Record", class: "RoundBigButton" %>
   </div>
-<% end %>
+  <% end %>
+</div>

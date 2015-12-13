@@ -1,24 +1,8 @@
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @ir_signals.each do |ir_signal| %>
-      <tr>
-        <td><%= ir_signal.name %></td>
-        <td>
-          <%= link_to "Send", nec_code_trigger_ir_signal_path(ir_signal), class: "button tiny", method: :post %>
-          <%= link_to "Remove", ir_signal_path(ir_signal),
-                class: "button tiny alert",
-                method: :delete,
-                confirm: "Are you sure?" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @ir_signals.each do |ir_signal| %>
+<div class="IrSignal">
+  <%= link_to "&nbsp;".html_safe, ir_signal_path(ir_signal), class: "remove", confirm: "Are you sure?", method: :delete %>
+  <%= link_to ir_signal.name, nec_code_trigger_ir_signal_path(ir_signal), class: "name", method: :post %>
+</div>
+<% end %>
 
-<%= link_to "New IR signal", new_ir_signal_path, class: "button" %>
+<%= link_to "+", new_ir_signal_path, class: "addButton" %>
