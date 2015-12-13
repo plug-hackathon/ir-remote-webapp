@@ -22,7 +22,6 @@ void setup() {
 
 void loop() {
 
-
 }
 
 int emitIRSignals(String command) {
@@ -44,8 +43,8 @@ int emitIRSignals(String command) {
 
 int sendIRSignal(String irSignal) {
 
-    const char *hexstring = "0x" + irSignal;
-    int number = (int)strtol(hexstring, NULL, 0);
+    int number = (int)strtol(irSignal, NULL, 10);
+    
     Serial.println(number);
     
     irsend.sendNEC(number, 32);
