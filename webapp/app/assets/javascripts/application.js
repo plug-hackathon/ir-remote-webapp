@@ -14,6 +14,13 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require fastclick
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(document).on('ready', initApp);
+$(document).on('page:load', initApp);
+
+function initApp() {
+    $(document).foundation();
+    new FastClick(document.body);
+}
