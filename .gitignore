@@ -15,10 +15,6 @@ webapp/spec/tmp
 rerun.txt
 pickle-email-*.html
 
-# TODO Comment out these rules if you are OK with secrets being uploaded to the repo
-webapp/config/initializers/secret_token.rb
-webapp/config/secrets.yml
-
 ## Environment normalisation:
 webapp/.bundle
 webapp/vendor/bundle
