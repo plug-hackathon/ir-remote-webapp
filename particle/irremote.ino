@@ -23,6 +23,7 @@ void loop() {
         result = Serial1.readStringUntil('\n');
         
         Particle.publish("emitIRSignal", result);
+        RGB.color(74, 255, 0); // GREEN
         
         delay(1000);
     }
@@ -37,17 +38,26 @@ int emitIRSignal(String command) {
         
         Serial.println("Start sending...");
         
+        RGB.control(true);
+        RGB.color(54, 0, 255); // BLUE
+        
         return 0;
     }
     else if(command == "stop") {
         
         Serial.println("Stop sending...");
         
+        RGB.control(false);
+        
         Serial.end();
         Serial1.end();
         return 0;
     }
     else {
+        RGB.control(true);
+        RGB.color(255, 0, 0); // RED
+        delay(1000);
+        RGB.control(false);
         return -1;
     }
 }
